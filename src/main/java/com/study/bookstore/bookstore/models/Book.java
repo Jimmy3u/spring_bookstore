@@ -2,6 +2,8 @@ package com.study.bookstore.bookstore.models;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,21 +16,29 @@ import jakarta.persistence.Table;
 @Table(name = "book")
 public class Book {
     /*
-     * TODO: Terminar implementação, adicionar ISBN, preços e checar interações com as reviews.
-     *      - Nomear os campos das tabelas e checar tipos e validação
+     * TODO: Terminar implementação, adicionar ISBN, preços e checar interações com
+     * as reviews.
+     * - Nomear os campos das tabelas e checar tipos e validação
      */
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private long id;
+
+    @Column(name = "book_name")
     private String bookName;
+    @Column(name = "book_description")
     private String bookDescription;
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Review> bookReviews;
 
     public Book() {
+    }
+
+    public long getBookId() {
+        return id;
     }
 
     public String getBookName() {

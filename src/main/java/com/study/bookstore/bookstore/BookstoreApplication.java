@@ -1,5 +1,7 @@
 package com.study.bookstore.bookstore;
 
+import java.util.Optional;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,8 +29,13 @@ public class BookstoreApplication {
 			// save the book
 			bookRepository.save(book);
 
+			Book book2 = new Book();
+			book2.setBookName("Teste2");
+			book2.setBookDescription("Teste3");
+
+			// save the book
+			bookRepository.save(book2);
 			// create and save new pages
-			
 		};
 	}
 }
