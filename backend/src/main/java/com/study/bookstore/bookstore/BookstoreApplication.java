@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.study.bookstore.bookstore.models.Book;
+import com.study.bookstore.bookstore.models.User;
 import com.study.bookstore.bookstore.repository.BookRepository;
+import com.study.bookstore.bookstore.repository.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -16,7 +18,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner mappingDemo(BookRepository bookRepository) {
+	public CommandLineRunner mappingDemo(BookRepository bookRepository, UserRepository userRepository) {
 		return args -> {
 
 			// create a new book
@@ -34,6 +36,11 @@ public class BookstoreApplication {
 			// save the book
 			bookRepository.save(book2);
 			// create and save new pages
+
+			User a = new User();
+			a.setUserEmail("teste@gmail.com");
+			a.setUserName("Carlos silva");
+			userRepository.save(a);
 		};
 	}
 }

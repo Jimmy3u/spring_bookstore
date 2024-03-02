@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "book")
+@Table(name = "tb_book")
 public class Book {
     /*
      * TODO: Terminar implementação, adicionar ISBN, preços e checar interações com

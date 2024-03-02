@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "book_reviews")
+@Table(name = "tb_book_reviews")
 public class Review {
 
     @Id
@@ -32,6 +32,9 @@ public class Review {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     // TODO : Adicionar parte de usuario e notas de review.
 
     public Review() {
