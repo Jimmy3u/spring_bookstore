@@ -20,32 +20,42 @@ public class BookService {
 
     public List<BookRecord> getBooks() {
         return bookRepo.findAll().stream()
-                .map(t -> RecordUtil.toRecord(t)).toList();
+                .map(t -> RecordUtil.toBookRecord(t)).toList();
     }
 
     public BookWithReviewsRecord getBook(long id) {
         var b = bookRepo.findById(id).orElse(
                 new Book());
-        return RecordUtil.toBookDetailedRecord(b);
+        return RecordUtil.toBookRecordWithReviews(b);
     }
 
     public BookRecord saveBook(BookRecord book) {
         Book b = new Book();
 
         b.setBookName(book.bookName());
-        b.setBookDescription(book.bookDescription());
+        b.setBookDesc(book.bookDescription());
 
         var saved = bookRepo.save(b);
 
-        return RecordUtil.toRecord(saved);
+        return RecordUtil.toBookRecord(saved);
 
     }
 
+    @SuppressWarnings("null")
     public BookRecord deleteBook(long id) {
 
         var b = bookRepo.findById(id).orElseThrow();
         bookRepo.delete(b);
-        return RecordUtil.toRecord(b);
+        return RecordUtil.toBookRecord(b);
     }
 
+    public BookRecord updateBook(long id, BookRecord b) {
+        var up = bookRepo.findById(id).orElseThrow();
+        if (b.bookName() != null)
+            up.setBookName(b.bookName());
+        if (b.bookDescription() != null)
+            up.setBookDesc(b.bookDescription());
+        bookRepo.save(up);
+        return RecordUtil.toBookRecord(up);
+    }
 }

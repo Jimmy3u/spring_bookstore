@@ -29,7 +29,7 @@ public class Book {
     @Column(name = "book_name")
     private String bookName;
     @Column(name = "book_description")
-    private String bookDescription;
+    private String bookDesc;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Review> bookReviews;
@@ -49,12 +49,12 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getBookDescription() {
-        return bookDescription;
+    public String getBookDesc() {
+        return bookDesc;
     }
 
-    public void setBookDescription(String bookDescription) {
-        this.bookDescription = bookDescription;
+    public void setBookDesc(String bookDescription) {
+        this.bookDesc = bookDescription;
     }
 
     public Set<Review> getBookReviews() {
@@ -63,7 +63,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", bookName=" + bookName + ", bookDescription=" + bookDescription + ", bookReviews="
+        return "Book [id=" + id + ", bookName=" + bookName + ", bookDescription=" + bookDesc + ", bookReviews="
                 + bookReviews + "]";
     }
 

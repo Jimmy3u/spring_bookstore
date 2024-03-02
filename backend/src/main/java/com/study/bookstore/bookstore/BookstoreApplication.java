@@ -1,7 +1,5 @@
 package com.study.bookstore.bookstore;
 
-import java.util.Optional;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,14 +22,14 @@ public class BookstoreApplication {
 			// create a new book
 			Book book = new Book();
 			book.setBookName("Teste");
-			book.setBookDescription("Teste2");
+			book.setBookDesc("Teste2");
 
 			// save the book
 			bookRepository.save(book);
 
 			Book book2 = new Book();
 			book2.setBookName("Teste2");
-			book2.setBookDescription("Teste3");
+			book2.setBookDesc("Teste3");
 
 			// save the book
 			bookRepository.save(book2);
