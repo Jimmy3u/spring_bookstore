@@ -23,10 +23,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="user_id")
     UUID id;
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false, unique = true)
     String userName;
     @Column(name = "user_email", nullable = false, unique = true)
     String userEmail;
+    @Column(name = "user_password", nullable = false)
+    String userPassword;
     @CreationTimestamp
     @Column(name= "user_account_createdAt")
     Date createdAt;
@@ -49,10 +51,6 @@ public class User {
 
     public Set<Review> getUserReviews() {
         return userReviews;
-    }
-
-    public void setUserReviews(Set<Review> userReviews) {
-        this.userReviews = userReviews;
     }
 
     public User() {
